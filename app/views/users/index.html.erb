@@ -1,0 +1,39 @@
+<% title "Users" %>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>State</th>
+    <th>City</th>
+    <th>Postal Code</th>
+    <th>Height</th>
+    <th>Weight</th>
+    <th>Is Smoker</th>
+    <th>Email Address</th>
+    <th>Coverage</th>
+    <th>Coverage Period</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%=h user.first_name %></td>
+      <td><%=h user.last_name %></td>
+      <td><%=h user.address %></td>
+      <td><%=h user.state %></td>
+      <td><%=h user.city %></td>
+      <td><%=h user.postal_code %></td>
+      <td><%=h user.height %></td>
+      <td><%=h user.weight %></td>
+      <td><%=h user.is_smoker %></td>
+      <td><%=h user.email_address %></td>
+      <td><%=h user.coverage %></td>
+      <td><%=h user.coverage_period %></td>
+      <td><%= link_to "Show", user %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User", new_user_path %></p>

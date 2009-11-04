@@ -1,0 +1,27 @@
+one:
+  first_name: MyString
+  last_name: MyString
+  address: MyText
+  state: MyString
+  city: MyString
+  postal_code: MyString
+  height: 1.5
+  weight: 1.5
+  is_smoker: false
+  email_address: MyString
+  coverage: 1
+  coverage_period: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  address: MyText
+  state: MyString
+  city: MyString
+  postal_code: MyString
+  height: 1.5
+  weight: 1.5
+  is_smoker: false
+  email_address: MyString
+  coverage: 1
+  coverage_period: 1
