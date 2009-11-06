@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :contacts
 
   map.resources :users
 
   map.signup 'signup', :controller => 'users', :action => 'new'
 
-  Map
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

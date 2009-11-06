@@ -57,18 +57,9 @@ class ContactsController < ApplicationController
   # PUT /contacts/1
   # PUT /contacts/1.xml
   def update
-    @contact = Contact.find(params[:id])
-
-    respond_to do |format|
-      if @contact.update_attributes(params[:contact])
-        flash[:notice] = 'Contact was successfully updated.'
-        format.html { redirect_to(@contact) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @contact.errors, :status => :unprocessable_entity }
-      end
-    end
+    user = User.find(params[:id])
+    user.updatecontacts(params[:checked])
+    redirect_to :action=>:index
   end
 
   # DELETE /contacts/1
@@ -82,4 +73,5 @@ class ContactsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
