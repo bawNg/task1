@@ -1,12 +1,8 @@
 <h1>Editing contact</h1>
 
-<% form_for(@contact) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<table>
+    <%= render :partial=>'contact', :collection=>@all_contacts  %>
+</table>
 
 <%= link_to 'Show', @contact %> |
 <%= link_to 'Back', contacts_path %>

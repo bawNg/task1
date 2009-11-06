@@ -1,0 +1,11 @@
+<tr>
+    <td>Image</td>
+    <td>
+      <table>
+        <tr><td>Name:</td><td><%= contact.last_name %>, <%= contact.first_name %></td></tr>
+        <tr><td>Phone:</td><td>xxxx-xxxx-xxxx</td></tr>
+        <tr><td>Email:</td><td><%= contact.email_address %></td></tr>
+      </table>
+    </td>
+    <td>Select <%= check_box_tag 'checked'+contact.id.to_s,contact.id %></td>
+</tr>
