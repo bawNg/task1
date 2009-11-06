@@ -28,11 +28,14 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    params[:contact_ids] |= []
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated user."
       redirect_to @user
     else
+      flash[:error] = "Failed to update user."
       render :action => 'edit'
+
     end
   end
   
