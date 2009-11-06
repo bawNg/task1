@@ -1,4 +1,4 @@
-<% semantic_form_for setup_user(@user) do |f| %>
+<% semantic_form_for @user do |f| %>
     <%= f.error_messages %>
     <% f.inputs do %>
         <%= f.input :first_name %>
@@ -11,12 +11,8 @@
         <%= f.input :weight %>
         <%= f.input :is_smoker %>
         <%= f.input :email_address %>
-        <% semantic_fields_for :coverage do |c| %>
-            <%= c.input :amount %>
-        <% end %>
-        <% semantic_fields_for :coverage_period do |c| %>
-            <%= c.input :period %>
-        <% end %>
+        <%= f.inputs :coverage %>
+        <%= f.inputs :coverage_period %>
     <% end %>
     <%= f.buttons %>
 <% end %>
