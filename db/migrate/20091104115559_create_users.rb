@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :is_smoker
       t.string :email_address
       t.integer :coverage_id
+      t.integer :coverage_period_id
       t.timestamps
     end
   end

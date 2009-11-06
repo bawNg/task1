@@ -27,8 +27,8 @@
       <td><%=h user.weight %></td>
       <td><%=h user.is_smoker %></td>
       <td><%=h user.email_address %></td>
-      <td><%=h user.coverage %></td>
-      <td><%=h user.coverage_period %></td>
+      <td><%=h user.Coverage.coverage if !user.coverage.nil? %></td>
+      <td><%=h user.Coverage.coverage_years if !user.coverage.nil? %></td>
       <td><%= link_to "Show", user %></td>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
       <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>

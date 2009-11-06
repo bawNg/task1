@@ -11,9 +11,14 @@
 
 ActiveRecord::Schema.define(:version => 20091104130505) do
 
+  create_table "coverage_periods", :force => true do |t|
+    t.integer  "period"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "coverages", :force => true do |t|
-    t.integer  "coverage"
-    t.integer  "coverage_years"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20091104130505) do
     t.boolean  "is_smoker"
     t.string   "email_address"
     t.integer  "coverage_id"
+    t.integer  "coverage_period_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

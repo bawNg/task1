@@ -1,3 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :address, :state, :city, :postal_code, :height, :weight, :is_smoker, :email_address, :coverage, :coverage_period
+  belongs_to :coverage
+  belongs_to :coverage_period
+  accepts_nested_attributes_for :coverage, :coverage_period
 end
