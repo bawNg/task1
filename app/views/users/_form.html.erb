@@ -3,8 +3,10 @@
     <% f.inputs do %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
-        <%= f.input :address %>
-        <%= f.input :state %>
+        <%= f.input :address_line_1 %>
+        <%= f.input :address_line_2 %>
+        <%= f.input :address_line_3 %>
+        <%= f.input :state, :as => :select, :collection => Carmen::state_names('US') %>
         <%= f.input :city %>
         <%= f.input :postal_code %>
         <%= f.input :height %>
