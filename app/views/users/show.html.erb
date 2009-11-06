@@ -42,11 +42,11 @@
 </p>
 <p>
   <strong>Coverage:</strong>
-  <%=h @user.Coverage.coverage if !@user.coverage.nil? %>
+  <%=h @user.coverage.amount if !@user.coverage.nil? %>
 </p>
 <p>
   <strong>Coverage Period:</strong>
-  <%=h @user.Coverage.coverage_years if !@user.coverage.nil? %>
+  <%=h @user.coverage_period.period if !@user.coverage.nil? %>
 </p>
 
 <p>
