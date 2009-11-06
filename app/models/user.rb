@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :users, :through=>:contact
   accepts_nested_attributes_for :coverage, :coverage_period
 
-  def updatecontacts
-    update_attribute(users,params[:contact_ids])
+  def updatecontacts(contact_ids)
+    update_attribute(users,contact_ids)
   end
 
   def address_line_1
@@ -34,5 +34,5 @@ class User < ActiveRecord::Base
     s = self.address.split('', 3)
     s[2] = value
     self.address = s
- end
+  end
 end
