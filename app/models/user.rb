@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :coverage
   belongs_to :coverage_period
-  has_many :users, :through=>:contact_id
+  has_many :users, :through => :contact
   accepts_nested_attributes_for :coverage, :coverage_period
 
   def address_line_1
@@ -30,5 +30,12 @@ class User < ActiveRecord::Base
     s = self.address.split('', 3)
     s[2] = value
     self.address = s
+  end
+
+  def date_of_birth
+    ""
+  end
+  def date_of_birth=value
+    ""
   end
 end

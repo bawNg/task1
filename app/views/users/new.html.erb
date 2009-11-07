@@ -1,5 +1,6 @@
 <% title "New User" %>
 
-<%= render :partial => 'form' %>
+<% stylesheet 'jquery-ui-1.7.2.custom' %>
+<% javascript 'jquery.ui.core', 'jquery.ui.datepicker' %>
 
-<p><%= link_to "Back to List", users_path %></p>
+<%= render :partial => 'form' %>

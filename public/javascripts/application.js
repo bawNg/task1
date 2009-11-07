@@ -1,2 +1,5 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function (){
+    $('#user_date_of_birth').datepicker({changeMonth: true, changeYear: true,
+                                         minDate: '-116Y', maxDate: '-16Y',
+                                         yearRange: '-100:+100' });
+});
