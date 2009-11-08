@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
       redirect_to user_path
     else
-      params[:contact_ids] |= []
       if @user.update_attributes(params[:user])
         flash[:notice] = "Successfully updated user."
         redirect_to @user
@@ -43,7 +42,7 @@ class UsersController < ApplicationController
         render :action => 'edit'
 
       end
-   end
+    end
   end
   
   def destroy
