@@ -5,10 +5,6 @@ class User < ActiveRecord::Base
   has_many :users, :through => :contact
   accepts_nested_attributes_for :coverage, :coverage_period
 
-  def updatecontacts(contact_ids)
-    update_attribute(users,contact_ids)
-  end
-
   def address_line_1
     #self.address.split('', 3).first
     ""
@@ -43,4 +39,20 @@ class User < ActiveRecord::Base
   def date_of_birth=value
     ""
   end
+
+  def update_contacts(cids)
+     if cids
+       cids.each do |id|
+         if Contact.find(:all, :conditions=>['user_id = ?', self.id]).to_a.count >= 3
+            return
+         end
+         if @contact = Contact.find(:first, :conditions=>['contact_id = ? and user_id=?', id,self.id])
+         else @contact = self.contacts.build(:contact_id=>id)
+         end
+         @contact.save
+
+       end
+     end
+  end
+  
 end

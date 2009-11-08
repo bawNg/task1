@@ -27,16 +27,23 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
-    params[:contact_ids] |= []
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated user."
-      redirect_to @user
-    else
-      flash[:error] = "Failed to update user."
-      render :action => 'edit'
 
-    end
+    @user = User.find(params[:id])
+    if params[:cids]
+      @user.update_contacts(params[:cids])
+
+      redirect_to user_path
+    else
+      params[:contact_ids] |= []
+      if @user.update_attributes(params[:user])
+        flash[:notice] = "Successfully updated user."
+        redirect_to @user
+      else
+        flash[:error] = "Failed to update user."
+        render :action => 'edit'
+
+      end
+   end
   end
   
   def destroy
@@ -45,4 +52,6 @@ class UsersController < ApplicationController
     flash[:notice] = "Successfully destroyed user."
     redirect_to users_url
   end
+
+
 end
