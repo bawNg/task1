@@ -1,77 +1,26 @@
 class ContactsController < ApplicationController
-  # GET /contacts
-  # GET /contacts.xml
-  def index
-    @contacts = Contact.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @contacts }
-    end
-  end
-
-  # GET /contacts/1
-  # GET /contacts/1.xml
-  def show
-    @contact = Contact.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @contact }
-    end
-  end
-
-  # GET /contacts/new
-  # GET /contacts/new.xml
-  def new
-    @contact = Contact.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @contact }
-    end
-  end
-
-  # GET /contacts/1/edit
-  def edit
-    @all_contacts = User.find(:all)
-  end
-
-  # POST /contacts
-  # POST /contacts.xml
   def create
-    @contact = Contact.new(params[:contact])
-
-    respond_to do |format|
-      if @contact.save
-        flash[:notice] = 'Contact was successfully created.'
-        format.html { redirect_to(@contact) }
-        format.xml  { render :xml => @contact, :status => :created, :location => @contact }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @contact.errors, :status => :unprocessable_entity }
+    params[:cids] ||= []
+    if user = User.find(params[:uid])
+      params[:cids].each do |id|
+         @contact = user.contacts.build(:contact_id=>id)
+        if @contact.save
+          flash[:notice].concat("Successfully updated contact.<br/>")
+          render user_path(user)
+        else
+          render :action => 'edit'
+        end
       end
+    else
+      render user_path
     end
-  end
 
-  # PUT /contacts/1
-  # PUT /contacts/1.xml
-  def update
-    user = User.find(params[:id])
-    user.updatecontacts(params[:checked])
-    redirect_to :action=>:index
   end
-
-  # DELETE /contacts/1
-  # DELETE /contacts/1.xml
+  
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(contacts_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "Successfully destroyed contact."
+    redirect_to contacts_url
   end
-
 end

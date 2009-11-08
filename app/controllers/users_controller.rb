@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     params[:contact_ids] |= []
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated user."
+      @user.update_contacts(params[:checked])
       redirect_to @user
     else
       flash[:error] = "Failed to update user."
