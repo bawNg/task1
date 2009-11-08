@@ -39,4 +39,17 @@ class User < ActiveRecord::Base
   def date_of_birth=value
     ""
   end
+
+  def update_contacts(cids)
+     if cids
+       cids.each do |id|
+         if @contact = Contact.find(:first, :conditions=>['contact_id = ? and user_id=?', id,self.id])
+         else @contact = self.contacts.build(:contact_id=>id)
+         end
+         @contact.save
+
+       end
+     end
+  end
+  
 end

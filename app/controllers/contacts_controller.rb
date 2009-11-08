@@ -1,22 +1,10 @@
 class ContactsController < ApplicationController
-  def create
-    params[:cids] ||= []
-    if user = User.find(params[:uid])
-      params[:cids].each do |id|
-         @contact = user.contacts.build(:contact_id=>id)
-        if @contact.save
-          flash[:notice].concat("Successfully updated contact.<br/>")
-          render user_path(user)
-        else
-          render :action => 'edit'
-        end
-      end
-    else
-      render user_path
-    end
 
+  def edit
+    @user = User.find(params[:id])
+    @all_contacts = User.find(:all)
   end
-  
+
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
