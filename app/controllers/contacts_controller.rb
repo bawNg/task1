@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])  
     @all_contacts = User.find(:all)
   end
 

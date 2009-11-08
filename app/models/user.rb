@@ -10,27 +10,18 @@ class User < ActiveRecord::Base
     ""
   end
   def address_line_1=value
-    s = self.address.split('', 3)
-    s[0] = value
-    self.address = s
   end
   def address_line_2
     #self.address.split('', 3).second
     ""
   end
   def address_line_2=value
-    s = self.address.split('', 3)
-    s[1] = value
-    self.address = s
   end
   def address_line_3
     #self.address.split('', 3).third
     ""
   end
   def address_line_3=value
-    s = self.address.split('', 3)
-    s[2] = value
-    self.address = s
   end
 
   def date_of_birth
@@ -42,10 +33,16 @@ class User < ActiveRecord::Base
 
   def update_contacts(cids)
      if cids
+       contact_count = Contact.find_by_user_id(self.id).to_a.count
+
        cids.each do |id|
-         if Contact.find(:all, :conditions=>['user_id = ?', self.id]).to_a.count >= 3
+         #return if contact limit reached 
+         if contact_count >= 3
             return
+         else
+           contact_count += 1
          end
+
          if @contact = Contact.find(:first, :conditions=>['contact_id = ? and user_id=?', id,self.id])
          else @contact = self.contacts.build(:contact_id=>id)
          end
