@@ -4,8 +4,9 @@
 <table>
     <%= render :partial => 'contact', :collection=>@all_contacts  %>
 </table>
+
 <p><%= submit_tag 'Save and Mail' %></p>
-                                         
+<%= will_paginate @all_contacts %>                                        
 <% end %>
 
 
