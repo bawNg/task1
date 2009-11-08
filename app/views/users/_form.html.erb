@@ -7,7 +7,7 @@
         <%= f.input :address_line_2 %>
         <%= f.input :address_line_3 %>
         <%= f.input :state, :as => :select, :collection => Carmen::state_names('US') %>
-        <%= f.input :city %>
+        <%= f.input :city, :as => :select, :collection => {} %>
         <%= f.input :postal_code %>
         <%= f.input :height %>
         <%= f.input :weight %>
