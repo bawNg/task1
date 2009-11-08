@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
   def update_contacts(cids)
      if cids
        cids.each do |id|
+         if Contact.find(:all, :conditions=>['user_id = ?', self.id]).to_a.count >= 3
+            return
+         end
          if @contact = Contact.find(:first, :conditions=>['contact_id = ? and user_id=?', id,self.id])
          else @contact = self.contacts.build(:contact_id=>id)
          end
