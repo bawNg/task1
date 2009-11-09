@@ -4,10 +4,11 @@ require 'ftools'
 module Carmen
 
   (class << self; self; end).class_eval do
-    attr_accessor :default_country
+    attr_accessor :default_country, :default_state  
   end
   
   self.default_country = 'US'
+  self.default_state = 'New York'
   
   data_path = File.join(File.dirname(__FILE__), '../data')
   
@@ -17,8 +18,12 @@ module Carmen
     [File::basename(file_name, '.yml').upcase, YAML.load_file(file_name)]
   end
 
+  CITIES = YAML.load_file(File.join(data_path, 'cities.yml'))
   # Raised when attempting to retrieve states for an unsupported country
   class StatesNotSupported < RuntimeError; end
+
+  # Raised when attempting to retrieve cities for an unsupported state
+  class CitiesNotSupported < RuntimeError; end
 
   # Returns the country name corresponding to the supplied country code
   #  Carmen::country_name('TV') => 'Tuvalu'
@@ -83,7 +88,20 @@ module Carmen
       k == country_code
     end
   end
+
+
   
+  # Returns an array of city names within the specified state code
+  #  Carmen::city_names('NY') => ['Accord', 'Adams', ... ]
+  def self.city_names(state_code = Carmen.default_state)
+    self.cities(state_code).map{|code| code}  
+  end
+
+  def self.cities(state_n = Carmen.default_state)
+    raise CitiesNotSupported unless state_names.include?(state_n)
+    multiresult_search_collection(CITIES, state_n, 0)
+  end
+
   protected
   
   def self.search_collection(collection, value, index_to_match, index_to_retrieve)
@@ -93,5 +111,12 @@ module Carmen
     end
     nil
   end
-  
+
+  def self.multiresult_search_collection(collection, value, index_to_match)
+    return nil if collection.nil?
+    collection.each do |m|
+      return m if m[index_to_match] == value
+    end
+    nil
+  end
 end
