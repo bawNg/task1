@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Successfully created user."
-      redirect_to edit_user_path(@user)
+      redirect_to "/contacts/edit/#{@user.id}"
     else
       flash[:error] = "Unable to create new user!"
       render :action => 'new'
