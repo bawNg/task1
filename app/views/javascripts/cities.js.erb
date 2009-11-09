@@ -1,11 +1,10 @@
-var cities = <%= array_or_string_for_javascript(@cities) %>;
+var cities = <%= array_or_string_for_javascript @cities %>;
 var user_city = $('#user_city')[0];
 var options = user_city.options;
 options.length = 1;
 options[0] = new Option("");
 if (cities[0] != '') {
     $.each(cities, function(i) {
-        options[options.length] = new Option(cities[i]);
         options[options.length] = new Option(cities[i]);
     });
 }
