@@ -5,32 +5,6 @@ class User < ActiveRecord::Base
   has_many :users, :through => :contact
   accepts_nested_attributes_for :coverage, :coverage_period
 
-  def address_line_1
-    #self.address.split('', 3).first
-    ""
-  end
-  def address_line_1=value
-  end
-  def address_line_2
-    #self.address.split('', 3).second
-    ""
-  end
-  def address_line_2=value
-  end
-  def address_line_3
-    #self.address.split('', 3).third
-    ""
-  end
-  def address_line_3=value
-  end
-
-  def date_of_birth
-    ""
-  end
-  def date_of_birth=value
-    ""
-  end
-
   def update_contacts(cids)
      if cids
 #       contact_count = Contact.find_by_user_id(self.id).to_a.count
