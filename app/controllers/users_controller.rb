@@ -52,5 +52,14 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def send_registration_confirmation_email
+    @user = User.find(params[:user])
+    UserMailer.deliver_registration_confirmation(@user)
+  end
 
+  def send_contact_information_email
+    @recipient = User.find(params[:recipient])
+    @sender = User.find(params[:sender])
+    UserMailer.deliver_contact_information(@recipient, @sender, params[:message])
+  end
 end

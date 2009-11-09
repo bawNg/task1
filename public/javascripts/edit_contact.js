@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    $("#dialog").dialog({
+    $("#thank_you_dialog").dialog({
         bgiframe: true,
         height: 140,
         modal: true,
@@ -10,8 +10,15 @@ $(document).ready(function (){
             }
         }
     });
+
+    $("#sending_email_dialog").dialog({
+        bgiframe: true,
+        height: 140,
+        modal: true,
+        autoOpen: false
+    });
     
-    $("#send_email").dialog({
+    $("#send_email_dialog").dialog({
         bgiframe: true,
         autoOpen: false,
         height: 410,
@@ -19,15 +26,15 @@ $(document).ready(function (){
         modal: true,
         buttons: {
             'Submit': function() {
-                //TODO: send mail
+                if ($('#messsage').val() == '') { alert("Please enter a message to email to your contacts.") }
                 $(this).dialog('close');
-                $("#dialog").dialog('open');
+                $('#edit_contacts_form').submit();
             }
         }
     });
 
     $('#send_button').click(function() {
-        $('#send_email').dialog('open');
+        $('#send_email_dialog').dialog('open');
         return false;
     })
     .hover(

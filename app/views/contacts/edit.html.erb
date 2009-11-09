@@ -2,26 +2,30 @@
 <% javascript 'jquery-ui-1.7.2.custom.min', 'edit_contact' %>
 <h1>Editing contact</h1>
 
-<% form_tag user_path(@user), :method => :put do %>
+<% form_tag user_path(@user), :method => :put, :id => "edit_contacts_form" do %>
     <table>
         <%= render :partial => 'contact', :collection => @all_contacts  %>
     </table>
 
     <%= will_paginate @all_contacts %>
 
+    <%= hidden_field_tag 'email_message' %>
+
     <p>
         <%= submit_tag 'Save and Mail', :id => 'send_button' %>
     </p>
 <% end %>
 
-<div id="send_email" title="Send email to contacts">
+<div id="send_email_dialog" title="Send email to contacts">
   <% form_tag '' do -%>
     <% field_set_tag do -%>
       <%= text_area_tag 'message', nil, :rows => 15, :cols => 48, :class => "text ui-widget-content ui-corner-all" %>
     <% end -%>
   <% end -%>
 </div>
-<div id="dialog" title="Thank you for registering">
-    <p>Thank you for registering.</p>
-    <p>Your email has been sent to your contacts.</p>
+<div id="sending_email_dialog" title="Sending emails">
+    <div id="progressbar"> </div>
+</div>
+<div id="thank_you_dialog" title="Thank you">
+    Your email has been sent.
 </div>

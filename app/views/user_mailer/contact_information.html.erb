@@ -1,3 +1,57 @@
-Hi <%= @user.first_name %>,
+Hi <%= @recipient.first_name %>,
 
-Body goes here.
+<%= @sender.first_name %> <%= @sender.last_name %> has sent you a his/her contact details:
+
+<strong>Message:</strong>
+<%=p @message %>
+
+<p> </p>
+<h1>User details</h1>
+<p>
+  <strong>First Name:</strong>
+  <%=h @sender.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%=h @sender.last_name %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%=h @sender.address %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%=h @sender.state %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%=h @sender.city %>
+</p>
+<p>
+  <strong>Postal Code:</strong>
+  <%=h @sender.postal_code %>
+</p>
+<p>
+  <strong>Height:</strong>
+  <%=h @sender.height %>
+</p>
+<p>
+  <strong>Weight:</strong>
+  <%=h @sender.weight %>
+</p>
+<p>
+  <strong>Is Smoker:</strong>
+  <%=h @sender.is_smoker %>
+</p>
+<p>
+  <strong>Email Address:</strong>
+  <%=h @sender.email_address %>
+</p>
+<p>
+  <strong>Coverage:</strong>
+  <%=h @sender.coverage.amount if !@sender.coverage.nil? %>
+</p>
+<p>
+  <strong>Coverage Period:</strong>
+  <%=h @sender.coverage_period.period if !@sender.coverage.nil? %>
+</p>

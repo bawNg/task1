@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @set_contacts = Contact.connection.select_values('select contact_id from contacts where user_id  = '+@user.id.to_s)    
+    @set_contacts = Contact.find_all_by_user_id(@user, :select => 'contact_id').map(&:id)
     @all_contacts = User.paginate :page => params[:page], :per_page => 10
   end
 
