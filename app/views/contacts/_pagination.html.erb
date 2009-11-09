@@ -1,0 +1,8 @@
+<% form_tag user_path(@user), :method => :put, :id => "edit_contacts_form" do %>
+    <%= will_paginate @all_contacts %>
+       <table>
+         <%= render :partial => 'contact', :collection => @all_contacts  %>
+       </table>
+    <%= hidden_field_tag 'contactcount', 0 %>
+    <%= will_paginate @all_contacts %>
+<% end %>

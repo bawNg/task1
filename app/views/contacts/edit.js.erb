@@ -1,0 +1,19 @@
+
+$('#contacts').html("<%= escape_javascript(render('pagination')) %>");
+
+
+var inputs = $('#edit_contacts_form')[0].getElementsByTagName('input');
+
+for each( input in inputs){
+    for each(cid in cids_array){
+        if(input.value == cid){
+            input.checked = true;
+        }
+    }
+}
+
+for each( input in inputs){
+    if (input.checked){
+        $('#contactcount').val(Number($('#contactcount')[0].value)+1);
+    }
+}

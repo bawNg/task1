@@ -29,8 +29,8 @@ class UsersController < ApplicationController
   def update
 
     @user = User.find(params[:id])
-    if params[:cids]
-      @user.update_contacts(params[:cids])
+    if raw_cids = params[:rawcids]
+       @user.update_contacts(raw_cids.split(","))  
 
       redirect_to user_path
     else
