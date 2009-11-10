@@ -1,0 +1,12 @@
+<% title "Coverage" %>
+
+<p>
+  <strong>Amount:</strong>
+  <%=h @coverage.amount %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_coverage_path(@coverage) %> |
+  <%= link_to "Destroy", @coverage, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", coverages_path %>
+</p>

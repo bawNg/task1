@@ -1,0 +1,17 @@
+<% title "Coverages" %>
+
+<table>
+  <tr>
+    <th>Amount</th>
+  </tr>
+  <% for coverage in @coverages %>
+    <tr>
+      <td><%=h coverage.amount %></td>
+      <td><%= link_to "Show", coverage %></td>
+      <td><%= link_to "Edit", edit_coverage_path(coverage) %></td>
+      <td><%= link_to "Destroy", coverage, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Coverage", new_coverage_path %></p>

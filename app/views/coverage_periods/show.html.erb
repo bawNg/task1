@@ -1,0 +1,12 @@
+<% title "Coverage Period" %>
+
+<p>
+  <strong>Period:</strong>
+  <%=h @coverage_period.period %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_coverage_period_path(@coverage_period) %> |
+  <%= link_to "Destroy", @coverage_period, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", coverage_periods_path %>
+</p>
