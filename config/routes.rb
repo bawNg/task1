@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'users', :action => 'new'
   map.resources :contacts
   map.resources :users
 
