@@ -1,4 +1,7 @@
+//A variable to store which ids will be passed to the controller for saving as a contact
 var cids_array = [];
+
+//Gets called onload to initialize the pagination links for ajax
 $(function(){
     $(".pagination a").live("click",function(){
        $(".pagination").html("loading...");
@@ -9,6 +12,7 @@ $(function(){
 
 });
 
+//toggles if the last checked id should be in the array to be passed to the controller for saving as a contact
 function toggleInArray(cbox){
     if(cbox.checked){
         if(Number($("#contactcount")[0].value) >= 3){
