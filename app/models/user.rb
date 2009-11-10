@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
          else @contact = self.contacts.build(:contact_id=>id)
          end
          @contact.save
-
        end
      end
   end

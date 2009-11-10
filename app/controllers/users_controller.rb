@@ -32,9 +32,14 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     if raw_cids = params[:rawcids]
-       @user.update_contacts(raw_cids.split(","))  
-
-      redirect_to user_path
+      cids = raw_cids.split(",")
+      @user.update_contacts(cids)
+      @user.contacts.each do |contact|
+        next unless cids.include? contact.id
+        send_contact_information_email contact, @user, params[:message]
+      end
+      flash[:notice] = "Sent emails to contacts."
+      redirect_to @user
     else
       if @user.update_attributes(params[:user])
         flash[:notice] = "Successfully updated user."
@@ -54,14 +59,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def send_registration_confirmation_email
-    @user = User.find(params[:user])
-    UserMailer.deliver_registration_confirmation(@user)
-  end
-
-  def send_contact_information_email
-    @recipient = User.find(params[:recipient])
-    @sender = User.find(params[:sender])
-    UserMailer.deliver_contact_information(@recipient, @sender, params[:message])
+  private
+  def send_contact_information_email(recipient, sender, message)
+    @recipient = User.find(recipient)
+    @sender = User.find(sender)
+    UserMailer.deliver_contact_information(@recipient, @sender, message)
   end
 end
