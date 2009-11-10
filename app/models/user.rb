@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :coverage, :coverage_period
   validates_presence_of :first_name, :last_name, :address, :city, :contact_number, :email_address, :state, :coverage_period, :coverage, :date_of_birth, :postal_code, :height, :weight
   validates_format_of :contact_number,
-                      :with => /^[+]?\s[0-9\s]*$/,
-                      :message => "Invalid,should be +code xxxxxxx OR xxxxxxx"
+                      :with => /^(\+[0-9]{0,4}\s)?[0-9\s]*$/,
+                      :message => "Invalid, can contain +code xxxxxxx OR xxxxxxx"
   validates_format_of :email_address,
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
                       :message => "appears not to be valid"
