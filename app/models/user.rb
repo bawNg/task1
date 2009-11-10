@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :address, :city, :contact_number, :email_address, :state, :coverage_period, :coverage, :date_of_birth, :postal_code, :height, :weight
   validates_format_of :contact_number,
                       :with => /^[+]?\s[0-9\s]*$/,
-                      :message => "Invalid, can contain +code xxxxxxx OR xxxxxxx"
+                      :message => "Invalid,should be +code xxxxxxx OR xxxxxxx"
   validates_format_of :email_address,
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
                       :message => "appears not to be valid"
