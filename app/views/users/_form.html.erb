@@ -1,5 +1,5 @@
 <% stylesheet 'jquery-ui-1.7.2.custom' -%>
-<% javascript 'jquery-ui-1.7.2.custom.min.js' -%>
+<% javascript 'jquery-ui-1.7.2.custom.min.js', 'signup' -%>
 
 <% semantic_form_for @user do |f| %>
     <%= f.error_messages %>
@@ -8,10 +8,14 @@
         <%= f.input :last_name %>
         <%= f.input :address, :as => :text %>
         <%= f.input :state, :as => :select, :collection => Carmen::state_names('US') %>
-        <%= f.input :city, :as => :select, :collection => ["Loading..."] %>
+        <%= if params['user'].nil?
+            f.input :city, :as => :select, :collection => []
+        else
+            f.input :city, :as => :select, :selected => (params['user']['city'] || nil), :collection => (Carmen::city_names(params['user']['state']) unless params['user']['state'].blank?) || []
+        end %>
         <%= f.input :postal_code %>
         <%= f.input :contact_number %>
-        <%= f.input :height %>
+        <%= f.input :height %>                     
         <%= f.input :weight %>
         <%= f.input :date_of_birth, :as => :string %>
         <%= f.input :is_smoker %>
