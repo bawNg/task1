@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091109142414) do
+ActiveRecord::Schema.define(:version => 20091106111357) do
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id",    :default => 0
@@ -28,11 +28,6 @@ ActiveRecord::Schema.define(:version => 20091109142414) do
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "profiles", :force => true do |t|
-    t.integer "user_id",  :default => -1,          :null => false
-    t.string  "password", :default => "a2l#i1P45", :null => false
   end
 
   create_table "users", :force => true do |t|
