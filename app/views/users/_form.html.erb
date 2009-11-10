@@ -1,11 +1,14 @@
+<% stylesheet 'jquery-ui-1.7.2.custom' -%>
+<% javascript 'jquery-ui-1.7.2.custom.min.js' -%>
+
 <% semantic_form_for @user do |f| %>
     <%= f.error_messages %>
     <% f.inputs do %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
-        <%= f.input :address %>
+        <%= f.input :address, :as => :text %>
         <%= f.input :state, :as => :select, :collection => Carmen::state_names('US') %>
-        <%= f.input :city, :as => :select, :collection => [] %>
+        <%= f.input :city, :as => :select, :collection => ["Loading..."] %>
         <%= f.input :postal_code %>
         <%= f.input :contact_number %>
         <%= f.input :height %>
