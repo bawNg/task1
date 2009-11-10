@@ -14,8 +14,9 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(params[:user])
-
+    @user.password= generate_password(8)  
     if @user.save
+      UserMailer.deliver_registration_confirmation(@user)
       flash[:notice] = "Successfully created user."
       redirect_to "/contacts/edit/#{@user.id}"
     else
@@ -29,7 +30,6 @@ class UsersController < ApplicationController
   end
   
   def update
-
     @user = User.find(params[:id])
     if raw_cids = params[:rawcids]
       cids = raw_cids.split(",")
