@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :coverage_periods
+
+  map.resources :coverages
+
   map.root :controller => 'users', :action => 'new'
   map.resources :contacts
   map.resources :users

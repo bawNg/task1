@@ -1,0 +1,17 @@
+<% title "Coverage Periods" %>
+
+<table>
+  <tr>
+    <th>Period</th>
+  </tr>
+  <% for coverage_period in @coverage_periods %>
+    <tr>
+      <td><%=h coverage_period.period %></td>
+      <td><%= link_to "Show", coverage_period %></td>
+      <td><%= link_to "Edit", edit_coverage_period_path(coverage_period) %></td>
+      <td><%= link_to "Destroy", coverage_period, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Coverage Period", new_coverage_period_path %></p>
