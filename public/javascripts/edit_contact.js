@@ -28,7 +28,14 @@ $(document).ready(function (){
             'Submit': function() {
                 if ($('#messsage').val() == '') { alert("Please enter a message to email to your contacts.") }
                 $(this).dialog('close');
-                $('#edit_contacts_form').submit();
+                 if ($('#contactcount')[0].value > 2){
+                    $('#edit_contacts_form').submit();
+                 }
+                 else{
+                     alert("You need to select 3 contacts as a minimum");
+                 }
+
+
             }
         }
     });
