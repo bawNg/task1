@@ -94,7 +94,8 @@ module Carmen
   # Returns an array of city names within the specified state code
   #  Carmen::city_names('NY') => ['Accord', 'Adams', ... ]
   def self.city_names(state_code = Carmen.default_state)
-    self.cities(state_code).map{|code| code}  
+    cities = self.cities(state_code).map{|code| code}
+    cities[1,cities.count]
   end
 
   def self.cities(state_n = Carmen.default_state)

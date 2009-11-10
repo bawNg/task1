@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   has_many :contacts
   has_many :users, :through => :contact
   accepts_nested_attributes_for :coverage, :coverage_period
+  validates_presence_of :first_name, :last_name, :address, :city, :is_smoker,:contact_number, :email_address, :state, :coverage_period, :coverage, :date_of_birth, :postal_code, :height, :weight
+  validates_format_of :email_address,
+                      :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
+                      :message => "Your email does not appear to be valid"       
+  validates_uniqueness_of :email_address
+
+
 
   def update_contacts(cids)
      if cids
