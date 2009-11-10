@@ -8,5 +8,11 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-
+  def generate_password(length=6)
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ23456789'
+    password = ''
+    length.times { |i| password << chars[rand(chars.length)] }
+    password
+  end
+  
 end
