@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password= generate_password(8)  
     if @user.save
-      UserMailer.deliver_registration_confirmation(@user)
+      #UserMailer.deliver_registration_confirmation(@user)
       flash[:notice] = "Successfully created user."
       redirect_to "/contacts/edit/#{@user.id}"
     else
@@ -35,8 +35,8 @@ class UsersController < ApplicationController
       cids = raw_cids.split(",")
       @user.update_contacts(cids)
       @user.contacts.each do |contact|
-        next unless cids.include? contact.id
-        send_contact_information_email contact, @user, params[:message]
+        next unless cids.include? contact.id    
+#        send_contact_information_email contact, @user, params[:message]
       end
       flash[:notice] = "Sent emails to contacts."
       redirect_to @user
