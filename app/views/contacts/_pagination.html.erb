@@ -3,6 +3,6 @@
        <table>
          <%= render :partial => 'contact', :collection => @all_contacts  %>
        </table>
-    <%= hidden_field_tag 'contactcount', @contact_count %>
+    <%= hidden_field_tag 'currentpage_contactcount', @contact_count %>
     <%= will_paginate @all_contacts %>
 <% end %>

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :coverage
   belongs_to :coverage_period
   has_many :contacts
-  has_many :users, :through => :contact
+  has_many :users, :through => :contacts
   accepts_nested_attributes_for :coverage, :coverage_period
   validates_presence_of :first_name, :last_name, :address, :city, :contact_number, :email_address, :state, :coverage_period, :coverage, :date_of_birth, :postal_code, :height, :weight
   validates_format_of :contact_number,

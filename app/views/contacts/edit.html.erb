@@ -15,6 +15,7 @@
       <%= text_area_tag 'message', nil, :rows => 15, :cols => 48, :class => "text ui-widget-content ui-corner-all" %>
     </div>
     <p>
+    <%= hidden_field_tag 'overall_contactcount', @overall_count %>
     <%= submit_tag 'Save and Mail', :id => 'send_button' %>
     </p>
 <% end %>
