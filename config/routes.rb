@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.signup 'signup', :controller => 'users', :action => 'new'
 
+  map.login 'login', :controller => 'session', :action => 'login'
+  map.session 'logincheck', :controller => 'session', :action => 'logincheck', :method => :post 
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
