@@ -59,8 +59,8 @@
 
 <p>
   <strong>Contacts</strong><br />
-  <% @user.contactees.each do |contactee| %>
-  <%= contactee.first_name %> | <%= contactee.last_name %> | <%= contactee.email_address  %> <br/>
+  <% @user.contacts.each do |contactship| %>
+  <%= contactship.contactee.first_name %> | <%= contactship.contactee.last_name %> | <%= contactship.contactee.email_address  %> <br/>
   <% end%>
 </p>
 

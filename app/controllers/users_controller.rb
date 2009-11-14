@@ -33,9 +33,11 @@ class UsersController < ApplicationController
     if raw_cids = params[:rawcids]
       cids = raw_cids.split(",")
       @user.update_contacts(cids)
-      @user.contactees.each do |contact|
-        next unless cids.include? contact.id    
-        send_contact_information_email contact, @user, params[:message]
+      @user.contacts.each do |contact|
+        contactee = contact.contactee
+        next unless cids.include? contactee.id.to_s
+        puts contactee.first_name
+        send_contact_information_email contactee, @user, params[:message]
       end
       flash[:notice] = "Sent emails to contacts."
       redirect_to @user
