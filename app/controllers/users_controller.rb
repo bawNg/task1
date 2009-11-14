@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(params[:user])
     @user.password= generate_password(8)  
     if @user.save
