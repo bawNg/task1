@@ -57,4 +57,11 @@
   <%=h @user.coverage_period.period if !@user.coverage.nil? %>
 </p>
 
+<p>
+  <strong>Contacts</strong><br />
+  <% @user.contactees.each do |contactee| %>
+  <%= contactee.first_name %> | <%= contactee.last_name %> | <%= contactee.email_address  %> <br/>
+  <% end%>
+</p>
+
 <%= link_to 'All users',:action => :index%>

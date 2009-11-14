@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if raw_cids = params[:rawcids]
       cids = raw_cids.split(",")
       @user.update_contacts(cids)
-      @user.contacts.each do |contact|
+      @user.contactees.each do |contact|
         next unless cids.include? contact.id    
         send_contact_information_email contact, @user, params[:message]
       end

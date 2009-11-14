@@ -12,8 +12,8 @@
 ActiveRecord::Schema.define(:version => 20091106111357) do
 
   create_table "contacts", :force => true do |t|
-    t.integer  "user_id",    :default => 0
-    t.integer  "contact_id", :default => 0
+    t.integer  "user_id",      :default => 0
+    t.integer  "contactee_id", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
