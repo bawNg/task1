@@ -2,9 +2,9 @@
 $('#contacts').html("<%= escape_javascript(render('pagination')) %>");
 
 
-var inputs = $("input:checkbox");
 
-for each( input in inputs){
+
+for each( input in $("input:checkbox")){
     for each(cid in cids_array){
         if(input.value == cid){
             input.checked = true;
