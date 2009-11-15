@@ -2,18 +2,13 @@
 $('#contacts').html("<%= escape_javascript(render('pagination')) %>");
 
 
-var inputs = $('#edit_contacts_form')[0].getElementsByTagName('input');
+var inputs = $("input:checkbox");
 
 for each( input in inputs){
     for each(cid in cids_array){
         if(input.value == cid){
             input.checked = true;
+            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount')[0].value)+1);
         }
-    }
-}
-
-for each( input in inputs){
-    if (input.checked){
-        $('#currentpage_contactcount').val(Number($('#currentpage_contactcount')[0].value)+1);
     }
 }
