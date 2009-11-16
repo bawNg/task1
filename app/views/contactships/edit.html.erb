@@ -1,6 +1,5 @@
 <% stylesheet 'jquery-ui-1.7.2.custom', 'edit_contactships' -%>
 <% javascript 'jquery-ui-1.7.2.custom.min', 'edit_contactships' -%>
-<% javascript 'pagination' -%>
 <h1>Editing contact</h1>
 
 <% form_tag user_path(@user), :method => :put, :id => "edit_contacts_form", :onSubmit=>'return minSelected();' do -%>
