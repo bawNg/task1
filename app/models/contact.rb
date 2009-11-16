@@ -1,4 +1,4 @@
 class Contact < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :contactee, :class_name => "User"
+  has_many :contactships
+  has_many :users, :through => :contactships
 end

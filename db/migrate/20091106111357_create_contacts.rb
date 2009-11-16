@@ -1,8 +1,10 @@
 class CreateContacts < ActiveRecord::Migration
   def self.up
     create_table :contacts do |t|
-      t.column :user_id, :integer, :default=>0, :null=>true
-      t.column :contactee_id, :integer, :default=>0, :null=>true
+      t.column :first_name, :varchar, :default=>'', :null=>false
+      t.column :last_name, :varchar, :default=>'', :null=>false
+      t.column :email_address, :varchar, :default => '', :null=>false
+      t.column :contact_number, :varchar, :default => '', :null => false   
       t.timestamps
     end
   end

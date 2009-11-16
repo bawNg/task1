@@ -3,8 +3,10 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :first_name
       t.string :last_name
+      t.integer :coverage_id
+      t.integer :coverage_period_id
+      t.string :profile_id
       t.datetime :date_of_birth
-      t.string :password
       t.text :address
       t.string :state
       t.string :city
@@ -14,8 +16,6 @@ class CreateUsers < ActiveRecord::Migration
       t.float :weight
       t.boolean :is_smoker
       t.string :email_address
-      t.integer :coverage_id
-      t.integer :coverage_period_id
       t.timestamps
     end
   end

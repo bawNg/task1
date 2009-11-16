@@ -1,0 +1,14 @@
+
+$('#contacts').html("<%= escape_javascript(render('pagination')) %>"); //renders the pagination partial into #contacts
+
+
+
+
+for each(var input in $("input:checkbox")){         //checks already selected contacts on a page
+    for each(var cid in cids_array){
+        if(input.value == cid){
+            input.checked = true;
+            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount')[0].value)+1);
+        }
+    }
+}

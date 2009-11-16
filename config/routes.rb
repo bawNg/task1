@@ -1,16 +1,20 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :profiles
+
+  map.resources :contactships
+
   map.resources :coverage_periods
 
   map.resources :coverages
 
-  map.root :controller => 'users', :action => 'new'
+  map.root :controller => 'users', :action => 'new'   #sets the default page to be a signup page
   map.resources :contacts
   map.resources :users
 
   map.signup 'signup', :controller => 'users', :action => 'new'
 
-  map.login 'login', :controller => 'session', :action => 'login'
-  map.session 'logincheck', :controller => 'session', :action => 'logincheck', :method => :post 
+  map.login 'login', :controller => 'session', :action => 'login' # for temporary login page
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
