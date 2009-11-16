@@ -1,8 +1,9 @@
-<% form_tag user_path(@user), :method => :put, :id => "edit_contacts_form" do %>
+<% #this partial was made for the ajax request -%>
+<% form_tag user_path(@user), :method => :put, :id => "edit_contacts_form" do -%>
     <%= will_paginate @all_contacts %>
        <table>
          <%= render :partial => 'contact', :collection => @all_contacts  %>
        </table>
     <%= hidden_field_tag 'currentpage_contactcount', @contact_count %>
     <%= will_paginate @all_contacts %>
-<% end %>
+<% end -%>
