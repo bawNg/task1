@@ -9,9 +9,9 @@
         <table width="100%">
           <tr valign="top">
             <td width="25%"><%= label_tag :address,"Address:" %></td>
-            <td><%= text_field_tag :address1, @address[0],:size => "74%" %><br/>
-                <%= text_field_tag :address2, @address[1],:size => "74%"%><br/>
-                <%= text_field_tag :address3, @address[2],:size => "74%" %><br/></td>
+            <td><%= text_field_tag :address1, @address[0],:size => "43%" %><br/>
+                <%= text_field_tag :address2, @address[1],:size => "43%"%><br/>
+                <%= text_field_tag :address3, @address[2],:size => "43%" %><br/></td>
           </tr>
         </table>
         <%= f.input :state, :as => :select, :collection => Carmen::state_names('US') %>

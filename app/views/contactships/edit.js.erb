@@ -8,7 +8,7 @@ for (var i=0; i< inputs.length;i++){         //checks already selected contacts 
     for (var j=0;j<cids_array.length;j++){
         if(inputs[i].value == cids_array[j]){
             inputs[i].checked = true;
-            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount').value)+1);
+            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount').val())+1);
         }
     }
 }

@@ -82,9 +82,9 @@ form.formtastic fieldset ol li ul.errors li { padding:0; border:none; display:li
 
 /* STRING & NUMERIC OVERRIDES
 --------------------------------------------------------------------------------------------------*/
-form.formtastic fieldset ol li.string input { width:74%; }
-form.formtastic fieldset ol li.password input { width:74%; }
-form.formtastic fieldset ol li.numeric input { width:74%; }
+form.formtastic fieldset ol li.string input { width:43%; }
+form.formtastic fieldset ol li.password input { width:43%; }
+form.formtastic fieldset ol li.numeric input { width:10%; }
 
 
 /* TEXTAREA OVERRIDES

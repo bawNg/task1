@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application', 'formtastic' %> <!--, 'formtastic-changes' %>-->
+    <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes' %> <!--, 'formtastic-changes' %>-->
     <%= javascript_include_tag 'jquery-1.3.2.min' %>
     <%= yield(:head) %>
     <%= javascript_include_tag 'application' %>
