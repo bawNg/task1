@@ -1,14 +1,14 @@
 
-$('#contacts').html("<%= escape_javascript(render('pagination')) %>"); //renders the pagination partial into #contacts
+$('#contacts').html("<%= escape_javascript(render("pagination")) %>"); //renders the pagination partial into #contacts
 
 
-
-
-for each(var input in $("input:checkbox")){         //checks already selected contacts on a page
-    for each(var cid in cids_array){
-        if(input.value == cid){
-            input.checked = true;
-            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount')[0].value)+1);
+$("#currentpage_contactcount").val($("input:checkbox:checked").length);    
+var inputs = $("input:checkbox");
+for (var i=0; i< inputs.length;i++){         //checks already selected contacts on a page
+    for (var j=0;j<cids_array.length;j++){
+        if(inputs[i].value == cids_array[j]){
+            inputs[i].checked = true;
+            $('#currentpage_contactcount').val(Number($('#currentpage_contactcount').value)+1);
         }
     }
 }

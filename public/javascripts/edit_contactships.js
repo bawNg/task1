@@ -61,10 +61,8 @@ $(document).ready(function (){
             $(this).removeClass("ui-state-active");
     });
 });
-
 //A variable to store which ids will be passed to the controller for saving as a contact
 var cids_array = [];
-
 //Gets called onload to initialize the pagination links for ajax
 $(function(){
     $(".pagination a").live("click",function(){
@@ -72,6 +70,8 @@ $(function(){
        $.get(this.href,null,null,"script");
        return false;
     });
+    //initialises the cids_array
+
 
 
 });
@@ -79,7 +79,7 @@ $(function(){
 //toggles if the last checked id should be in the array to be passed to the controller for saving as a contact
 function toggleInArray(cbox){
     if(cbox.checked){
-        if(Number($("#currentpage_contactcount")[0].value) >= 3){
+        if(Number($("#currentpage_contactcount").val()) >= 3){
             alert("you have already selected 3 users");
             cbox.checked = null;
         }

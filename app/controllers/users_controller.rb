@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.address= params[:address1].concat("\n"+params[:address2]).concat("\n"+params[:address3])
     @profile =  Profile.new
     password =  generate_password(8) #generate a password for the user, should be changed to store as md5 or other encrypted
     @profile.password= MD5.new(password).to_s
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @address = @user.address.split("\n")  
   end
   
   def update
