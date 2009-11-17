@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @profile =  Profile.new
     password =  generate_password(8) #generate a password for the user, should be changed to store as md5 or other encrypted
     @profile.password= MD5.new(password).to_s
-    if @user.save!
+    if @user.save
       @profile.user_id= @user.id
       @profile.save!
       @user.profile_id= @profile.id
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Successfully created user."
       redirect_to "/contactships/edit/#{@user.id}"
     else
+      @address = [params[:address1], params[:address2], params[:address3]]
       flash[:error] = "Unable to create new user!"
       render :action => 'new'
     end
