@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @address = ['','','']
   end
 
   def create
@@ -34,7 +35,9 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
-    @address = @user.address.split("\n")  
+    @address = @user.address.split("\n")
+
+
   end
   
   def update
