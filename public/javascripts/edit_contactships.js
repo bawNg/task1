@@ -30,20 +30,19 @@ $(document).ready(function (){
                 var message = $("#message").val();
                 $("#email_message").val(message);
                 $(this).dialog('close');
-                 if ($('#overall_contactcount').val() > 2){
-                    $('#edit_contacts_form').submit();
-                 }
-                 else{
-                     alert("You need to select 3 contacts as a minimum");
-                 }
-
-
+                $('#edit_contacts_form').submit();
+                 
             }
         }
     });
 
     $('#send_button').click(function() {
-        $('#send_email_dialog').dialog('open');
+        if($('#overall_contactcount').val() < 1){
+            alert("You need to select 1 or more contacts");
+        }
+        else{
+            $('#send_email_dialog').dialog('open');
+        }
         return false;
     })
     .hover(
@@ -79,13 +78,12 @@ $(function(){
 //toggles if the last checked id should be in the array to be passed to the controller for saving as a contact
 function toggleInArray(cbox){
     if(cbox.checked){
-        if(Number($("#currentpage_contactcount").val()) >= 3){
+        if(Number($("#overall_contactcount").val()) >= 3){
             alert("you have already selected 3 users");
             cbox.checked = null;
         }
         else{
             cids_array.push(cbox.value);
-            $("#currentpage_contactcount").val(Number($("#currentpage_contactcount")[0].value)+1);
             $("#overall_contactcount").val(Number($("#overall_contactcount")[0].value)+1);
         }
     }
@@ -99,7 +97,6 @@ function toggleInArray(cbox){
             }
 
         }
-        $("#currentpage_contactcount").val(Number($("#currentpage_contactcount")[0].value)-1);
         $("#overall_contactcount").val(Number($("#overall_contactcount")[0].value)-1);
     }
 

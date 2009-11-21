@@ -40,19 +40,28 @@ class UsersController < ApplicationController
 
 
   end
-  
+
   def update
     @user = User.find(params[:id])
 
     if raw_cids = params[:rawcids] #checks if there are contact id's sent
-      cids = raw_cids.split(",")
-      @user.update_contacts(cids)  # create all new contacts
-      @user.contacts.each do |contact|  #Loops through all contacts and sends them email from user
-        next unless cids.include? contact.id.to_s #a check so that messages aren't sent non-new contacts of the user
-        UserMailer.deliver_contact_information( contact, @user, params[:email_message])
+      cids = raw_cids.split(',')
+      puts cids.count.to_s.concat(" *********************************************************************************************")
+      if cids.count > 3
+         flash[:error] = "you can't select more than 3 contacts"
+         redirect_to :controller => :contactships, :action => :edit, :id => @user.id
+         return
+
+      else
+        @user.update_contacts cids
+        @user.contacts.each do |contact|  #Loops through all contacts and sends them email from user
+         next unless cids.include? contact.id.to_s #a check so that messages aren't sent non-new contacts of the user
+           UserMailer.deliver_contact_information( contact, @user, params[:email_message])
+        end
+         flash[:notice] = "Sent emails to contacts."
+         redirect_to @user
+
       end
-      flash[:notice] = "Sent emails to contacts."
-      redirect_to @user
     else
       if @user.update_attributes(params[:user])
         flash[:notice] = "Successfully updated user."
